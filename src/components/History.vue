@@ -16,9 +16,16 @@ export default {
     items: { type: Array, required: true },
   },
   methods: {
-    copy({ target }) {
+    async copy({ target }) {
       if (!navigator.clipboard) return;
-      navigator.clipboard.writeText(target.innerText);
+      try {
+        await navigator.clipboard.writeText(target.innerText);
+        // eslint-disable-next-line no-alert
+        alert('Copy OK');
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.warn(err);
+      }
     },
   },
 };
