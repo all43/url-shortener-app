@@ -1,29 +1,23 @@
 <template>
   <div id="app">
-    <form @submit.prevent="createShortUrl">
-      <input type="text" v-model="url">
-      <button type="submit">Submit</button>
-    </form>
+   <InputBlock @create="createShortUrl" />
   </div>
 </template>
 
 <script>
 import api from '@/mixins/api';
+import InputBlock from '@/components/InputBlock.vue';
 
 export default {
   name: 'App',
   mixins: [api],
   components: {
-    //
+    InputBlock,
   },
-  data: () => ({
-    url: 'https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch',
-  }),
   methods: {
-    async createShortUrl() {
-      const { url } = this;
-      const response = await this.request('api/urls', { url });
-      console.log(await response.json());
+    async createShortUrl({ url }) {
+      const result = await this.request('api/urls', { url });
+      console.log(result);
     },
   },
 };
