@@ -47,4 +47,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+@media only screen and (max-width: 600px) {
+  .column-mobile {
+    flex-direction: column;
+    &>*{margin: 0.2em 0;}
+  }
+}
 </style>

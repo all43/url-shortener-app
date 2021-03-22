@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <input type="text" v-model="url">
+  <form @submit.prevent="handleSubmit" class="column-mobile">
+    <input type="text" size="44" v-model="url">
     <button type="button" :disabled="isDisabled" @click="clear">Clear</button>
     <button type="submit" :disabled="isDisabled">Submit</button>
   </form>
@@ -39,7 +39,6 @@ export default {
 form {
   display: flex;
   justify-content: center;
-  margin: 1em;
 }
 
 input, button {

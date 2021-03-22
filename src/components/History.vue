@@ -1,8 +1,10 @@
 <template>
   <div class="list">
-    <div class="item" v-for="item in items" :key="item.shortUrl">
-      <div class="full">{{ item.url }}</div>
-      <div class="short">{{ item.shortUrl }}</div>
+    <div class="item column-mobile" v-for="item in items" :key="item.shortUrl">
+      <a :href="item.url" target="_blank">{{ item.url }}</a>
+      <mark @click="copy($event)">
+        <code>{{ item.shortUrl }}</code>
+      </mark>
   </div>
   </div>
 </template>
@@ -13,16 +15,25 @@ export default {
   props: {
     items: { type: Array, required: true },
   },
+  methods: {
+    copy({ target }) {
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(target.innerText);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+  mark {cursor: pointer;}
   div.item {
-    div {
+    margin-top: 0.2em;
+    display: flex;
+    border-radius: 0.2em;
+    border: 1px solid gray;
+    mark, a {
       margin: 0.2em;
       padding: 0.1em;
-      border: 1px solid darkgrey;
-      display: inline-block;
     }
   }
 </style>

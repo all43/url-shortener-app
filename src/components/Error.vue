@@ -20,3 +20,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  p{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    }
+</style>
