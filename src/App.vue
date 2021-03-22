@@ -1,23 +1,33 @@
 <template>
   <div id="app">
-   <InputBlock @create="createShortUrl" />
+   <InputBlock @create="createShortUrl" :disabled="loading" />
+   <History :items="history" />
   </div>
 </template>
 
 <script>
 import api from '@/mixins/api';
 import InputBlock from '@/components/InputBlock.vue';
+import History from '@/components/History.vue';
 
 export default {
   name: 'App',
   mixins: [api],
+  data: () => ({
+    history: [],
+  }),
   components: {
     InputBlock,
+    History,
   },
   methods: {
     async createShortUrl({ url }) {
       const result = await this.request('api/urls', { url });
-      console.log(result);
+      if (result.success) {
+        const { shortUrl } = result;
+        this.history.push({ url, shortUrl });
+      }
+      console.log(this.history);
     },
   },
 };
