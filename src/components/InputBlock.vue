@@ -33,3 +33,43 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+
+form {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+input, button {
+  padding: 0.3em 0.7em;
+  margin-right: 0.5em;
+}
+
+button {
+  &[type=button] {
+    background-color: rgb(223, 93, 76);
+  }
+  &[type=submit] {
+    background-color: rgb(55, 108, 223);
+  }
+  border: 0;
+  border-radius: 0.2em;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.5s;
+  &:hover {
+    opacity: 0.75;
+  }
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+button:focus, input:focus {
+  outline: none;
+}
+
+</style>
