@@ -9,10 +9,10 @@ export default {
       const host = process.env.VUE_APP_HOST;
       const port = process.env.VUE_APP_PORT;
       const url = `${host}:${port}/${path}`;
-
       this.loading = true;
       this.error = '';
-
+      // artificial dealy for testing loading state
+      await new Promise((res) => setTimeout(res, 500));
       const result = { success: false };
       const options = {
         headers: {
