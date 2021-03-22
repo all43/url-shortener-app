@@ -30,16 +30,16 @@ export default {
         const errorObj = {};
         if (success) responseData = await response.json();
         else {
-          errorObj.error = response.status === 400 ? 'invalidUrl' : 'unknown';
+          this.error = response.status === 400 ? 'invalidUrl' : 'unknown';
+          errorObj.error = this.error;
         }
         Object.assign(result, responseData, { success }, errorObj);
       } catch (e) {
         // eslint-disable-next-line no-console
         console.warn(e);
-        const error = 'connectionError';
-        this.error = error;
-        result.error = error;
+        this.error = 'connectionError';
       }
+
       this.loading = false;
       return result;
     },
