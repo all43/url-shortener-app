@@ -1,6 +1,7 @@
 <template>
   <div id="app">
    <InputBlock @create="createShortUrl" :disabled="loading" />
+   <Loading v-show="loading" />
    <Error v-show="error" :error="error" />
    <History :items="history" />
   </div>
@@ -10,6 +11,7 @@
 import api from '@/mixins/api';
 import InputBlock from '@/components/InputBlock.vue';
 import Error from '@/components/Error.vue';
+import Loading from '@/components/Loading.vue';
 import History from '@/components/History.vue';
 
 export default {
@@ -21,6 +23,7 @@ export default {
   components: {
     InputBlock,
     Error,
+    Loading,
     History,
   },
   methods: {
