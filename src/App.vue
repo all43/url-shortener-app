@@ -49,6 +49,7 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   .column-mobile {
+    display: flex;
     flex-direction: column;
     &>*{margin: 0.2em 0;}
   }

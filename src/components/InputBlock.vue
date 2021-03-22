@@ -36,14 +36,19 @@ export default {
 
 <style lang="scss" scoped>
 
+@media only screen and (min-width: 600px) {
+  form {
+    display: inline-flex;
+    gap: 0.3em;
+  }
+}
+
 form {
-  display: flex;
   justify-content: center;
 }
 
 input, button {
   padding: 0.3em 0.7em;
-  margin-right: 0.5em;
 }
 
 button {
